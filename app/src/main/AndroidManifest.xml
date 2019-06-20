@@ -16,25 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Calculation">
+        <activity android:name=".ControlCategories">
             <intent-filter>
-                <action android:name="android.intent.action.MAINCALCULATION" />
+                <action android:name="android.intent.action.DEFAULT" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Physical">
+        <activity android:name=".VistaFormulas">
             <intent-filter>
-                <action android:name="android.intent.action.MAINPHYSICAL" />
+                <action android:name="android.intent.action.DEFAULT" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Trigonometry">
-            <intent-filter>
-                <action android:name="android.intent.action.MAINTRIGONOMETRY" />
-
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
