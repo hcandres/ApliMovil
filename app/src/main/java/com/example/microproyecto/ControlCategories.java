@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class ControlCategories extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,12 +22,31 @@ public class ControlCategories extends AppCompatActivity {
 
     }
 
+    protected void onSaveInstanceState(Bundle instanceState) {
+        ListView myListView = (ListView) findViewById(R.id.listViewFormula);
+        TextView nombreCategorie = (TextView) findViewById(R.id.txCategories);
+        super.onSaveInstanceState(instanceState);
+        instanceState.putInt("visualState", myListView.getVisibility());
+        instanceState.putInt("visualState", nombreCategorie.getVisibility());
+    }
 
+    //Use this method to recover EditText/Button status when phone goes to landscape/portrait mode
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        ListView myListView = (ListView) findViewById(R.id.listViewFormula);
+        TextView nombreCategorie = (TextView) findViewById(R.id.txCategories);
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState.getInt("visualState") == View.VISIBLE) {
+            myListView.setVisibility(View.VISIBLE);
+            myListView.setVisibility(View.VISIBLE);
+            nombreCategorie.setVisibility(View.VISIBLE);
+        }
+    }
 
 
     private void controlCateg() {
-        TextView nombreCategorie = (TextView) findViewById(R.id.txCategories);
-        ListView myListView = (ListView) findViewById(R.id.listViewFormula);
+
+        final ListView myListView = (ListView) findViewById(R.id.listViewFormula);
+        final TextView nombreCategorie = (TextView) findViewById(R.id.txCategories);
         ArrayAdapter<String> adapter = null;
 
         String[] listCalc = {"Derivadas", "Integrales"};

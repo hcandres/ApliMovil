@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         listCategories();
     }
+
+
 
     public void listCategories() {
         final ListView Lista = (ListView) findViewById(R.id.listViewFormula);
@@ -60,6 +63,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    protected void onSaveInstanceState(Bundle instanceState) {
+        ListView Lista = (ListView) findViewById(R.id.listViewFormula);
+        super.onSaveInstanceState(instanceState);
+        instanceState.putInt("visualState", Lista.getVisibility());
+    }
+
+    //Use this method to recover EditText/Button status when phone goes to landscape/portrait mode
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        ListView Lista = (ListView) findViewById(R.id.listViewFormula);
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState.getInt("visualState") == View.VISIBLE) {
+            Lista.setVisibility(View.VISIBLE);
+            Lista.setVisibility(View.VISIBLE);
+        }
     }
 
 }

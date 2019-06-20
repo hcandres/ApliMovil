@@ -10,10 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.QuickContactBadge;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class VistaFormulas extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +25,28 @@ public class VistaFormulas extends AppCompatActivity {
         mostrarformula();
     }
 
-    private void mostrarformula() {
+    protected void onSaveInstanceState(Bundle instanceState) {
         TextView infoFormula = (TextView) findViewById(R.id.txInfoFormula);
         TextView nombreFormula = (TextView) findViewById(R.id.txNombreFormula);
+        super.onSaveInstanceState(instanceState);
+        instanceState.putInt("visualState", infoFormula.getVisibility());
+        instanceState.putInt("visualState", nombreFormula.getVisibility());
+    }
 
+    //Use this method to recover EditText/Button status when phone goes to landscape/portrait mode
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        TextView infoFormula = (TextView) findViewById(R.id.txInfoFormula);
+        TextView nombreFormula = (TextView) findViewById(R.id.txNombreFormula);
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState.getInt("visualState") == View.VISIBLE) {
+            infoFormula.setVisibility(View.VISIBLE);
+            nombreFormula.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void mostrarformula() {
+        final TextView infoFormula = (TextView) findViewById(R.id.txInfoFormula);
+        final TextView nombreFormula = (TextView) findViewById(R.id.txNombreFormula);
         Intent i = getIntent();
         Bundle b = i.getExtras();
 
