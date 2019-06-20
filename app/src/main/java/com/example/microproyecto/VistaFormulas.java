@@ -1,12 +1,15 @@
 package com.example.microproyecto;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.QuickContactBadge;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,6 +64,7 @@ public class VistaFormulas extends AppCompatActivity {
                 infoFormula.setText("En mecánica clásica, se dice que una fuerza realiza trabajo cuando hay un desplazamiento de su punto de aplicación. El trabajo de la fuerza sobre ese cuerpo será equivalente a la energía necesaria para desplazarlo1\u200B. Por consiguiente, se dice que una cierta masa tiene energía cuando esa masa tiene la capacidad de producir un trabajo; además, con esta afirmación se deduce que no hay trabajo sin energía. Por ello, se dice que el carbón, la gasolina, la electricidad, los átomos son fuentes de energía, pues pueden producir algún trabajo o convertirse en otro tipo de energía; para entender esto se tiene en cuenta el principio universal de la energía según el cual la energía no se crea ni se destruye, solamente se transforma.2\u200B El trabajo es una magnitud física escalar que se representa con la letra {\\displaystyle \\ W} \\ W (del inglés Work) y se expresa en unidades de energía, esto es en julios o joules (J) en el Sistema Internacional de Unidades.\n" +
                         "\n" +
                         "Ya que por definición el trabajo es un tránsito de energía,3\u200B nunca se refiere a él como incremento de trabajo, ni se simboliza como ΔW.");
+                nomFormula = "Trabajo_(física)";
                 break;
 
             case "Area":
@@ -86,7 +90,19 @@ public class VistaFormulas extends AppCompatActivity {
                         "\n" +
                         "1 dm3 = 1 litro = 0,001 m3 = 1000 cm3.");
                 break;
-        }
+        }masInfo(nomFormula);
+    }
+
+    Button btMasInfo;
+    private void masInfo(final String nomFormula){
+        btMasInfo = (Button) findViewById(R.id.btMasInfo);
+        btMasInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent buscar = new Intent(Intent.ACTION_VIEW,Uri.parse(("https://es.wikipedia.org/wiki/")+nomFormula));
+                startActivity(buscar);
+            }
+        });
     }
 
 
