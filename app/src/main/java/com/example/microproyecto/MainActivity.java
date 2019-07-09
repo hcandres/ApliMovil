@@ -43,19 +43,19 @@ public class MainActivity extends AppCompatActivity {
                 String itemVal = (String)Lista.getItemAtPosition(position);
                 switch (itemVal){
                     case "Calculo":
-                        Toast.makeText(MainActivity.this, "INGRESÓ A CALCULO", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.ingresocalculo, Toast.LENGTH_SHORT).show();
                         myIntent = new Intent(view.getContext(),ControlCategories.class);
                         myIntent.putExtra("name","CALCULATION");
                         break;
 
                     case "Fisica":
-                        Toast.makeText(MainActivity.this, "INGRESÓ A FISICA", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.ingresofisica, Toast.LENGTH_SHORT).show();
                         myIntent = new Intent(view.getContext(),ControlCategories.class);
                         myIntent.putExtra("name","PHYSICAL");
                         break;
 
                     case "Trigonometria":
-                        Toast.makeText(MainActivity.this, "INGRESÓ A TRIGONOMETRIA", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, R.string.ingresotrigo, Toast.LENGTH_SHORT).show();
                         myIntent = new Intent(view.getContext(),ControlCategories.class);
                         myIntent.putExtra("name","TRIGONOMETRY");
                         break;

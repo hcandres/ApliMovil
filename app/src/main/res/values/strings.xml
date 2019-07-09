@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">MicroProyecto</string>
+    <string name="app_name">Easy Calculator</string>
+    <string name="leer_codigo_qr">LEER CODIGO QR</string>
+    <string name="easy_calculator">EASY CALCULATOR</string>
+    <string name="ingresoderevidas">Ingresó a Derivadas</string>
+    <string name="ingresointegrables">Ingresó a Integrales</string>
+    <string name="ingresofuerza">Ingresó a Derivadas</string>
+    <string name="ingresotrabajo">Ingresó a Derivadas</string>
+    <string name="ingresoarea">Ingresó a Area</string>
+    <string name="ingresovolumen">Ingresó a Volumen</string>
+    <string name="ingresocalculo">Ingresó a Calculo</string>
+    <string name="ingresofisica">Ingresó a Fisica</string>
+    <string name="ingresotrigo">Ingresó a Trigonometria</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

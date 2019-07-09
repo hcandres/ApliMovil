@@ -95,12 +95,12 @@ public class ControlCategories extends AppCompatActivity {
                     case "CALCULATION":
                         switch (itemVal){
                             case "Derivadas":
-                                Toast.makeText(ControlCategories.this, "INGRESÓ A DERIVADAS", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ControlCategories.this, R.string.ingresoderevidas, Toast.LENGTH_SHORT).show();
                                 myIntent = new Intent(ControlCategories.this,VistaFormulas.class);
                                 myIntent.putExtra("formula","Derivada");
                                 break;
                             case "Integrales":
-                                Toast.makeText(ControlCategories.this, "INGRESÓ A INTEGRALES", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ControlCategories.this, R.string.ingresointegrables, Toast.LENGTH_SHORT).show();
                                 myIntent = new Intent(ControlCategories.this,VistaFormulas.class);
                                 myIntent.putExtra("formula","Integral");
                                 break;
@@ -110,12 +110,12 @@ public class ControlCategories extends AppCompatActivity {
                     case "PHYSICAL":
                         switch (itemVal){
                             case "Fuerza":
-                                Toast.makeText(ControlCategories.this, "INGRESÓ A FUERZA", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ControlCategories.this, R.string.ingresofuerza, Toast.LENGTH_SHORT).show();
                                 myIntent = new Intent(ControlCategories.this,VistaFormulas.class);
                                 myIntent.putExtra("formula","Fuerza");
                                 break;
                             case "Trabajo":
-                                Toast.makeText(ControlCategories.this, "INGRESÓ A TRABAJO", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ControlCategories.this, R.string.ingresotrabajo, Toast.LENGTH_SHORT).show();
                                 myIntent = new Intent(ControlCategories.this,VistaFormulas.class);
                                 myIntent.putExtra("formula","Trabajo");
                                 break;
@@ -125,12 +125,12 @@ public class ControlCategories extends AppCompatActivity {
                     case "TRIGONOMETRY":
                         switch (itemVal){
                             case "Area":
-                                Toast.makeText(ControlCategories.this, "INGRESÓ A AREA", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ControlCategories.this, R.string.ingresoarea, Toast.LENGTH_SHORT).show();
                                 myIntent = new Intent(ControlCategories.this,VistaFormulas.class);
                                 myIntent.putExtra("formula","Area");
                                 break;
                             case "Volumen":
-                                Toast.makeText(ControlCategories.this, "INGRESÓ A VOLUMEN", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ControlCategories.this, R.string.ingresovolumen, Toast.LENGTH_SHORT).show();
                                 myIntent = new Intent(ControlCategories.this,VistaFormulas.class);
                                 myIntent.putExtra("formula","Volumen");
                                 break;
