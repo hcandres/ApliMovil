@@ -1,16 +1,23 @@
 package com.example.microproyecto;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.zxing.Result;
 
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
+public class MainActivity extends AppCompatActivity  implements ZXingScannerView.ResultHandler {
+
+    private ZXingScannerView mScannerview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,14 +98,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void handleResult(Result result) {
 
-        Log.v( tag: "HandleResult", result.getText());
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Log.v("HandleResult",result.getText());
+        AlertDialog.Builder builder =new AlertDialog.Builder(this);
         builder.setTitle("Su ecuacion es");
         builder.setMessage(result.getText());
-        AlertDialog alertDialog = builder.create();
+        AlertDialog alertDialog=builder.create();
         alertDialog.show();
         mScannerview.resumeCameraPreview(this);
 
 
     }
 
+}
