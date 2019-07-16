@@ -12,8 +12,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
         listCategories();
     }
-
 
 
     public void listCategories() {
@@ -40,26 +37,27 @@ public class MainActivity extends AppCompatActivity {
                 Intent myIntent = null;
                 int item = position;
 
-                String itemVal = (String)Lista.getItemAtPosition(position);
-                switch (itemVal){
+                String itemVal = (String) Lista.getItemAtPosition(position);
+                switch (itemVal) {
                     case "Calculo":
                         Toast.makeText(MainActivity.this, R.string.ingresocalculo, Toast.LENGTH_SHORT).show();
-                        myIntent = new Intent(view.getContext(),ControlCategories.class);
-                        myIntent.putExtra("name","CALCULATION");
+                        myIntent = new Intent(view.getContext(), ControlCategories.class);
+                        myIntent.putExtra("name", "CALCULATION");
                         break;
 
                     case "Fisica":
                         Toast.makeText(MainActivity.this, R.string.ingresofisica, Toast.LENGTH_SHORT).show();
-                        myIntent = new Intent(view.getContext(),ControlCategories.class);
-                        myIntent.putExtra("name","PHYSICAL");
+                        myIntent = new Intent(view.getContext(), ControlCategories.class);
+                        myIntent.putExtra("name", "PHYSICAL");
                         break;
 
                     case "Trigonometria":
                         Toast.makeText(MainActivity.this, R.string.ingresotrigo, Toast.LENGTH_SHORT).show();
-                        myIntent = new Intent(view.getContext(),ControlCategories.class);
-                        myIntent.putExtra("name","TRIGONOMETRY");
+                        myIntent = new Intent(view.getContext(), ControlCategories.class);
+                        myIntent.putExtra("name", "TRIGONOMETRY");
                         break;
-                }startActivity(myIntent);
+                }
+                startActivity(myIntent);
             }
         });
 
@@ -82,5 +80,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-}
+    public void btnscanner(View v) {
+        mScannerview = new ZXingScannerView(this);
+        setContentView(mScannerview);
+        mScannerview.setResultHandler(this);
+        mScannerview.startCamera();
+
+    }
+
+    @Override
+    public void handleResult(Result result) {
+
+        Log.v( tag: "HandleResult", result.getText());
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Su ecuacion es");
+        builder.setMessage(result.getText());
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+        mScannerview.resumeCameraPreview(this);
+
+
+    }
 
