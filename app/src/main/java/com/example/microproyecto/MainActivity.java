@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity  implements ZXingScannerView
 
     public void listCategories() {
         final ListView Lista = (ListView) findViewById(R.id.listViewFormula);
-        String[] list = {"Calculo", "Fisica", "Trigonometria", "Fisica", "Trigonometria", "Fisica", "Trigonometria", "Fisica", "Trigonometria", "Fisica", "Trigonometria"};
+        //String[] list = {"Calculo", "Fisica", "Trigonometria", "Fisica", "Trigonometria", "Fisica", "Trigonometria", "Fisica", "Trigonometria", "Fisica", "Trigonometria"};
 
         Lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity  implements ZXingScannerView
             protected Void doInBackground(Void... voids) {
                 Lista = (ListView) findViewById(R.id.listViewFormula);
                 ArrayList<String> result = new ArrayList<>(0);
-                String myFeed = getApplication().getString(R.string.url);
+
                 try {
                     URL url = new URL("http://192.168.56.1:8080/formulas.json");
                     // Create a new HTTP URL connection
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity  implements ZXingScannerView
                     //JSON file starts with an array
                     reader.beginArray();
                     while (reader.hasNext()) {
-                        Formula item = new Formula("df","","");
+                        Formula i = new Formula("df","","");
                         //Parse a specific object inside the array
                         reader.beginObject();
                         while (reader.hasNext()) {
@@ -195,13 +195,13 @@ public class MainActivity extends AppCompatActivity  implements ZXingScannerView
                             //It gets the property value and store it on the correct property of ToDoItem object
                             switch (value) {
                                 case "categoria":
-                                    item.setCategoria(reader.nextString());
+                                    i.setCategoria(reader.nextString());
                                     break;
                                 case "nombre":
-                                    item.setNombre(reader.nextString());
+                                    i.setNombre(reader.nextString());
                                     break;
                                 case "informacion":
-                                    item.setInformacion(reader.nextString());
+                                    i.setInformacion(reader.nextString());
                                     break;
                                 default:
                                     reader.skipValue();
@@ -209,8 +209,8 @@ public class MainActivity extends AppCompatActivity  implements ZXingScannerView
                             }
                         }
                         reader.endObject();
-                        jsonListFormulas.add(item);
-                        listFormulasOb.add(item);
+                        jsonListFormulas.add(i);
+                        listFormulasOb.add(i);
                     }
                     reader.endArray();
                 } finally {
