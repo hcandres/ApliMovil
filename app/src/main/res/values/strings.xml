@@ -11,5 +11,6 @@
     <string name="ingresocalculo">Ingresó a Calculo</string>
     <string name="ingresofisica">Ingresó a Fisica</string>
     <string name="ingresotrigo">Ingresó a Trigonometria</string>
+    <string name="url">http://127.0.0.1:8080/formulas.json</string>
 
 </resources>

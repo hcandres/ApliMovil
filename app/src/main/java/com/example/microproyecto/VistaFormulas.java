@@ -2,17 +2,11 @@ package com.example.microproyecto;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.QuickContactBadge;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class VistaFormulas extends AppCompatActivity {
 
@@ -49,18 +43,24 @@ public class VistaFormulas extends AppCompatActivity {
         final TextView nombreFormula = (TextView) findViewById(R.id.txNombreFormula);
         Intent i = getIntent();
         Bundle b = i.getExtras();
-
         String nomFormula = b.getString("formula");
+        String info = new String();
 
+        for(Formula miFormula: MainActivity.listFormulasOb){
+            if(miFormula.getNombre().equals(nomFormula)){
+                info = miFormula.getInformacion();
+            }
+        }infoFormula.setText(info);
+        nombreFormula.setText(nomFormula);
+        if(nomFormula.equals("Trabajo")){
+            nomFormula = "Trabajo_(física)";
+        }
+        /*
         switch (nomFormula){
 
             case "Derivada":
                 nombreFormula.setText(nomFormula);
-                infoFormula.setText("En matemáticas, la derivada de una función, es la razón de cambio instantánea con la que cambia el valor de dicha función matemática, según cambie el valor de su variable independiente. La derivada de una función es un concepto local, es decir, se calcula como el límite de la rapidez de cambio media de la función en cierto intervalo, cuando el intervalo considerado para la variable independiente se torna cada vez más pequeño. Por ello se habla del valor de la derivada de una función en un punto dado.\n" +
-                        "\n" +
-                        "Un ejemplo habitual aparece al estudiar el movimiento: si una función representa la posición de un objeto con respecto al tiempo, su derivada es la velocidad de dicho objeto. Un avión que realice un vuelo transatlántico de 4500 km entre las 12:00 y las 18:00, viaja a una velocidad media de 750 km/h. Sin embargo, puede estar viajando a velocidades mayores o menores en distintos tramos de la ruta. En particular, si entre las 15:00 y las 15:30 recorre 400 km, su velocidad media en ese tramo es de 800 km/h. Para conocer su velocidad instantánea a las 15:20, por ejemplo, es necesario calcular la velocidad media en intervalos de tiempo cada vez menores alrededor de esta hora: entre las 15:15 y las 15:25, entre las 15:19 y las 15:21.\n" +
-                        "\n" +
-                        "Entonces el valor de la derivada de una función en un punto puede interpretarse geométricamente, ya que se corresponde con la pendiente de la recta tangente a la gráfica de la función en dicho punto. La recta tangente es, a su vez, la gráfica de la mejor aproximación lineal de la función alrededor de dicho punto. La noción de derivada puede generalizarse para el caso de funciones de más de una variable con la derivada parcial y el diferencial.");
+                infoFormula.setText("");
 
                 break;
 
@@ -111,7 +111,7 @@ public class VistaFormulas extends AppCompatActivity {
                         "\n" +
                         "1 dm3 = 1 litro = 0,001 m3 = 1000 cm3.");
                 break;
-        }masInfo(nomFormula);
+        }*/masInfo(nomFormula);
     }
 
     Button btMasInfo;

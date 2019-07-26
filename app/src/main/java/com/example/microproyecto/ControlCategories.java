@@ -1,14 +1,17 @@
 package com.example.microproyecto;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControlCategories extends AppCompatActivity {
 
@@ -49,33 +52,26 @@ public class ControlCategories extends AppCompatActivity {
         final TextView nombreCategorie = (TextView) findViewById(R.id.txCategories);
         ArrayAdapter<String> adapter = null;
 
-        String[] listCalc = {"Derivadas", "Integrales"};
-        String[] listPhys = {"Fuerza", "Trabajo"};
-        String[] listTrigo = {"Area", "Volumen"};
+
+
+        ArrayList<Formula> listFormulasOb = MainActivity.listFormulasOb;
+        List<String> listaF = new ArrayList<>();
 
         Intent i = getIntent();
         //Get the intent information
         Bundle b = i.getExtras();
         String nombCat = b.getString("name");
 
+        for(Formula miFormula:listFormulasOb){
+            if(miFormula.getCategoria().equals(nombCat)){
+                listaF.add(miFormula.getNombre());
+            }
+        }adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listaF);
+
         nombreCategorie.setText(""+nombCat);
 
-        switch (nombCat){
-            case "CALCULATION":
-                adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listCalc);
 
-                break;
-
-            case "PHYSICAL":
-                adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listPhys);
-
-                break;
-
-            case "TRIGONOMETRY":
-                adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, listTrigo);
-
-                break;
-        }myListView.setAdapter(adapter);
+        myListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         mostrarformula(myListView,nombCat);
 
@@ -92,14 +88,14 @@ public class ControlCategories extends AppCompatActivity {
 
                 String itemVal = (String)listFormu.getItemAtPosition(position);
                 switch (nombCat){
-                    case "CALCULATION":
+                    case "Calculo":
                         switch (itemVal){
-                            case "Derivadas":
+                            case "Derivada":
                                 Toast.makeText(ControlCategories.this, R.string.ingresoderevidas, Toast.LENGTH_SHORT).show();
                                 myIntent = new Intent(ControlCategories.this,VistaFormulas.class);
                                 myIntent.putExtra("formula","Derivada");
                                 break;
-                            case "Integrales":
+                            case "Integral":
                                 Toast.makeText(ControlCategories.this, R.string.ingresointegrables, Toast.LENGTH_SHORT).show();
                                 myIntent = new Intent(ControlCategories.this,VistaFormulas.class);
                                 myIntent.putExtra("formula","Integral");
@@ -107,7 +103,7 @@ public class ControlCategories extends AppCompatActivity {
                         }
                         break;
 
-                    case "PHYSICAL":
+                    case "Fisica":
                         switch (itemVal){
                             case "Fuerza":
                                 Toast.makeText(ControlCategories.this, R.string.ingresofuerza, Toast.LENGTH_SHORT).show();
@@ -122,7 +118,7 @@ public class ControlCategories extends AppCompatActivity {
                         }
                         break;
 
-                    case "TRIGONOMETRY":
+                    case "Trigonometria":
                         switch (itemVal){
                             case "Area":
                                 Toast.makeText(ControlCategories.this, R.string.ingresoarea, Toast.LENGTH_SHORT).show();
